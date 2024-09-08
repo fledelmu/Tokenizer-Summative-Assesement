@@ -1,0 +1,10 @@
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\bin\Debug\Tokenizer_Project.exe.config
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\bin\Debug\Tokenizer_Project.exe
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\bin\Debug\Tokenizer_Project.pdb
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.Form1.resources
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.Properties.Resources.resources
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.csproj.GenerateResource.cache
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.exe
+C:\Users\USER\source\repos\Tokenizer_Project\Tokenizer_Project\obj\Debug\Tokenizer_Project.pdb
