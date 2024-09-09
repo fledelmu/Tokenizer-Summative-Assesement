@@ -12,7 +12,6 @@ namespace TokenizerProject
     /// 1. When adding to the code comment inside the block what each thing does (di kailangan english)
     /// 2. Pull when trying to make changes to the class files.(para way mangutana unya unsa gi change sa lahi kay makitan sa pull request unsa na change or add)
     /// 3. Use docstrings (///) when making comments
-    /// 4. Kato ra pakyu nimo Brendan Joshua Acuna.
     /// </summary>
 
 
