@@ -17,16 +17,13 @@ namespace TokenizerProject
 
     internal class Implementation
     {
-        private string str;
+     
         private const char delimiter = '\\';
-        private List<string> grains;
-        private Dictionary<string, string> tokens;
+        
 
         public Implementation()
         {
-            this.str = "";
-            this.tokens = new Dictionary<string, string>();
-            this.grains = new List<string>();
+           
         }
 
         /// <summary>
@@ -44,7 +41,15 @@ namespace TokenizerProject
 
             for (int i = 0; i < str.Length; i++)
             {
-                if (char.IsPunctuation(str[i]) && str[i] != delimiter)
+                if (char.IsWhiteSpace(str[i]))
+                {
+                    if (token.Length > 0)
+                    {
+                        tokens.Add(token.ToString());
+                        token.Clear();
+                    }
+                }
+                else if (char.IsPunctuation(str[i]) && str[i] != delimiter)
                 {
                     if (token.Length > 0)
                     {
@@ -82,7 +87,7 @@ namespace TokenizerProject
         /// Classifies the tokens into categories {word, punctuation}
         /// </summary>
         /// <returns></returns>
-                public List<Tuple<string, string>> Classify(List<string> tokens)
+        public List<Tuple<string, string>> Classify(List<string> tokens)
         {
             List<Tuple<string, string>> classifications = new List<Tuple<string, string>>();
 
@@ -110,39 +115,50 @@ namespace TokenizerProject
         {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             StringBuilder currentToken = new StringBuilder();
-            string currentType = "";
+            bool hasLetter = false;
+            bool hasDigit = false;
 
             foreach (char ch in token)
             {
                 if (char.IsLetter(ch))
                 {
-                    if (currentToken.Length > 0 && currentType == "Number")
-                    {
-                        result.Add(new Tuple<string, string>(currentToken.ToString(), "Number"));
-                        currentToken.Clear();
-                    }
+                    hasLetter = true;
                     currentToken.Append(ch);
-                    currentType = "Word";
                 }
                 else if (char.IsDigit(ch))
                 {
-                    if (currentToken.Length > 0 && currentType == "Word")
+                    hasDigit = true;
+                    currentToken.Append(ch);
+                }
+                else if (char.IsPunctuation(ch))
+                {
+                    if (currentToken.Length > 0)
                     {
-                        result.Add(new Tuple<string, string>(currentToken.ToString(), "Word"));
+                        result.Add(new Tuple<string, string>(currentToken.ToString(), "Alphanumeric"));
                         currentToken.Clear();
                     }
-                    currentToken.Append(ch);
-                    currentType = "Number";
+                    result.Add(new Tuple<string, string>(ch.ToString(), "Punctuation"));
+                }
+                else
+                {
+                    if (currentToken.Length > 0)
+                    {
+                        result.Add(new Tuple<string, string>(currentToken.ToString(), "Alphanumeric"));
+                        currentToken.Clear();
+                    }
+                    result.Add(new Tuple<string, string>(ch.ToString(), "Special Character"));
                 }
             }
 
             if (currentToken.Length > 0)
             {
-                result.Add(new Tuple<string, string>(currentToken.ToString(), currentType));
+                string type = hasLetter && hasDigit ? "Alphanumeric" : "Unknown";
+                result.Add(new Tuple<string, string>(currentToken.ToString(), type));
             }
 
             return result;
         }
+
 
         public string ClassifyToken(string token)
         {
@@ -175,13 +191,12 @@ namespace TokenizerProject
             List<string> result = new List<string>();
 
             foreach (char c in token)
-        {
-            if (c != delimiter)
-            {    
+            {
+             
                 result.Add(c.ToString());
+            
             }
-        }
-        return string.Join(", ", result);
+            return string.Join(", ", result);
         }
     }
 }
