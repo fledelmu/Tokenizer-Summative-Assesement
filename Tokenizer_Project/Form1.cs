@@ -22,19 +22,20 @@ namespace Tokenizer_Project
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
-     private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
      {
          string inputText = textBox1.Text;
          tokens = t.Tokenize(inputText);
 
          dataGridView1.Rows.Clear();
 
-         List<string> classifications = t.Classify(tokens);
+            List<Tuple<string, string>> classifications = t.Classify(tokens);
 
-         for (int i = 0; i < tokens.Count; i++)
+
+            for (int i = 0; i < tokens.Count; i++)
          {
              string token = tokens[i];
-             string classs = classifications[i];
+             string classs = classifications[i].Item2;
              string granulatedString = t.GranularPhase(token);
 
              dataGridView1.Rows.Add(token, classs, granulatedString);
@@ -43,11 +44,6 @@ namespace Tokenizer_Project
      textBox1.Clear();
      }
 
-     private void button2_Click(object sender, EventArgs e)
-      {
 
-      }
-
-        
     }
 }
